@@ -1,0 +1,127 @@
+/* -----------------------------------------------------------------------------
+
+# Components - Sidebar
+
+----------------------------------------------------------------------------- */
+
+.sidebar {
+  @include rounded;
+  border: 1px solid $color-gray-medium;
+  max-height: calc(100vh - 7.5rem);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 6rem;
+
+  .sidebar-header {
+    border-bottom: 1px solid $color-gray-medium;
+    margin-bottom: 0;
+    padding: $space;
+  }
+
+  a {
+    color: $color-text;
+    display: block;
+    padding: (0.5 * $space) $space;
+
+    &:hover {
+      background: $color-gray-light;
+      color: $color-primary;
+    }
+  }
+
+  ul {
+    margin-bottom: 0;
+
+    li {
+      border-bottom: 1px solid $color-gray-medium;
+      margin-bottom: 0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .dark & {
+    background: $color-text;
+    border: 1px solid darken($color-text, $darken);
+
+    .sidebar-header {
+      border-bottom: 1px solid darken($color-text, $darken);
+    }
+
+    a:hover {
+      background: lighten($color-text, $lighten);
+      color: $color-white;
+    }
+
+    ul li {
+      border-bottom: 1px solid darken($color-text, $darken);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  @include mq("desktop-s") {
+    cursor: pointer;
+    max-height: 100%;
+    overflow-y: visible;
+    position: relative;
+    top: 0;
+
+    &:before {
+      @include material-icons;
+      @include rotate;
+      @include transition;
+      content: "keyboard_arrow_down";
+      height: 3.25rem;
+      line-height: 3.25rem;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      width: 3.25rem;
+    }
+
+    .sidebar-header {
+      @include rounded;
+      border-bottom: none;
+      padding: (0.75 * $space) $space;
+    }
+
+    ul {
+      display: none;
+    }
+
+    &.active {
+      &:before {
+        @include rotate(0);
+      }
+
+      .sidebar-header {
+        @include rounded(0);
+        @include rounded-top;
+        border-bottom: 1px solid $color-gray-medium;
+      }
+
+      ul {
+        display: block;
+      }
+    }
+
+    .dark & {
+      .sidebar-header {
+        border-bottom: none;
+      }
+
+      &.active .sidebar-header {
+        border-bottom: 1px solid darken($color-text, $darken);
+      }
+    }
+  }
+}

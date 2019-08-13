@@ -1,0 +1,197 @@
+/* -----------------------------------------------------------------------------
+
+# Components - Header
+
+----------------------------------------------------------------------------- */
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.header-main {
+	background: transparent;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+
+	nav {
+		@include transition;
+    display: inline-block;
+		padding: $space;
+    width: 100%;
+	}
+
+	a:not(.button) {
+		color: $color-text;
+		height: 2.5rem;
+		line-height: 2.5rem;
+
+		&:hover,
+		&:focus {
+			color: $color-primary;
+		}
+	}
+
+	ul {
+		float: right;
+		margin: 0;
+
+    li {
+      margin-bottom: 0;
+    }
+	}
+
+	.nav-toggle {
+    cursor: pointer;
+		display: none;
+	}
+
+	&.dark {
+		a:not(.button) {
+			color: $color-white;
+
+			&:hover,
+			&:focus {
+				color: $color-white;
+			}
+		}
+
+		.nav-toggle:before {
+			color: $color-white;
+		}
+	}
+
+	&.fade-in {
+		nav {
+			@include shadow-s;
+			background: rgba($color-white, 0.98);
+		}
+
+		a:not(.button) {
+			color: $color-text;
+
+			&:hover,
+			&:focus {
+				color: $color-primary;
+			}
+		}
+
+		.nav-toggle:before {
+			color: $color-text;
+		}
+
+		.button-secondary {
+			border: 1px solid $color-gray-medium;
+	    color: $color-primary;
+
+			&:hover {
+	      border: 1px solid $color-gray-medium;
+	    }
+
+	    &:focus {
+	      border: 1px solid $color-gray-medium;
+	    }
+		}
+	}
+
+	@include mq("tablet") {
+		ul {
+			display: none;
+		}
+
+		.nav-toggle {
+			@include transition;
+			display: inline-block;
+			float: right;
+			height: 2.5rem;
+			text-align: center;
+			width: 1.5rem;
+
+			&:before {
+				@include material-icons;
+				color: $color-text;
+				content: "menu";
+				line-height: 2.5rem;
+
+        /* Prevent text from icon name to show up before load */
+
+        .preload & {
+          font-size: 0;
+        }
+			}
+		}
+
+		&.active {
+			background: $color-white;
+			height: 100%;
+
+			nav {
+				@include shadow-none;
+				@include transition-none;
+				height: 100%;
+				overflow-y: scroll;
+				-webkit-overflow-scrolling: touch;
+			}
+
+			a:not(.button) {
+				color: $color-text;
+
+				&:hover,
+				&:focus {
+					color: $color-primary;
+				}
+			}
+
+			ul {
+				display: block;
+				padding: 2 * $space;
+        width: 100%;
+
+				li {
+					@include font-size-lead;
+          margin-bottom: 0.5 * $space;
+					padding: 0;
+					text-align: center;
+					width: 100%;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+
+					a:not(.button) {
+						line-height: 3rem;
+					}
+				}
+			}
+
+			.nav-toggle {
+				@include rotate;
+
+				&:before {
+					color: $color-text;
+					content: "close";
+				}
+			}
+
+			.button {
+				height: 3.5rem;
+				line-height: 3.375rem;
+				margin-top: $space;
+
+				&-secondary {
+					border: 1px solid $color-gray-medium;
+			    color: $color-primary;
+
+					&:hover {
+			      border: 1px solid $color-gray-medium;
+			    }
+
+			    &:focus {
+			      border: 1px solid $color-gray-medium;
+			    }
+				}
+			}
+		}
+	}
+}

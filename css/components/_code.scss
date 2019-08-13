@@ -1,0 +1,30 @@
+/* -----------------------------------------------------------------------------
+
+# Components - Code
+
+----------------------------------------------------------------------------- */
+
+.code-markup {
+  @include font-size-m;
+  margin-bottom: $space;
+
+  .code-header {
+    @include rounded-top;
+    background: lighten($color-text, $lighten);
+    color: $color-white;
+    display: block;
+    padding: $space;
+  }
+
+  span {
+    color: #d1d2d6;
+  }
+
+  code {
+    @include rounded-bottom;
+    background: $color-text;
+    color: #dcc982;
+    display: block;
+    padding: $space;
+  }
+}

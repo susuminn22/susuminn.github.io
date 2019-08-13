@@ -1,0 +1,29 @@
+/* -----------------------------------------------------------------------------
+
+# Components - Pricing
+
+----------------------------------------------------------------------------- */
+
+.pricing-switch {
+  margin-bottom: 2 * $space;
+
+  li:first-child {
+    @include font-size-default-b;
+    line-height: 2rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.pricing-duration {
+  @include font-size-s;
+}
+
+.pricing-monthly,
+.pricing-yearly.active {
+  display: inline-block;
+}
+
+.pricing-yearly,
+.pricing-monthly.inactive {
+  display: none;
+}

@@ -1,0 +1,125 @@
+/* -----------------------------------------------------------------------------
+
+# Tools - Background
+
+----------------------------------------------------------------------------- */
+
+.bg-dark {
+  background: darken($color-text, $darken);
+}
+
+.bg-light {
+  background: $color-gray-light;
+}
+
+.bg-primary {
+  background: $color-primary;
+}
+
+.bg-white {
+  background: $color-white;
+}
+
+/* Gradients */
+
+.bg-gradient-blue {
+  @include linear-gradient(#2584e0, #0957d9);
+}
+
+.bg-gradient-cyan {
+  @include linear-gradient(#1ac8e2, #04b2db);
+}
+
+.bg-gradient-green {
+  @include linear-gradient(#67dbb8, #39cfa2);
+}
+
+.bg-gradient-indigo {
+  @include linear-gradient(#606cc3, #313fae);
+}
+
+.bg-gradient-olive {
+  @include linear-gradient(#aacdb5, #85b99e);
+}
+
+.bg-gradient-pink {
+  @include linear-gradient(#e58cba, #dc60a3);
+}
+
+.bg-gradient-sienna {
+  @include linear-gradient(#d5bfab, #c4a495);
+}
+
+.bg-gradient-violet {
+  @include linear-gradient(#9e3ee2, #7421db);
+}
+
+/* Images and patterns */
+
+[class*="bg-image-"],
+[class*="bg-pattern-"] {
+  overflow: hidden;
+  position: relative;
+
+  &:before,
+	&:after {
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    bottom: -1px;
+		content: "";
+		height: 100%;
+		left: -1%;
+		position: absolute;
+		top: 0;
+		width: 102%;
+	}
+
+	&:before {
+    z-index: -2;
+	}
+
+	&:after {
+    z-index: -1;
+  }
+}
+
+/* Overlays */
+
+[class*="bg-image-"].overlay:after {
+  background: rgba($color-white, $opacity-s);
+}
+
+.dark[class*="bg-image-"].overlay:after {
+  background: rgba($color-text, $opacity-s);
+}
+
+/* Images */
+
+@each $name in "01" "02" "03" {
+  .bg-image-#{$name}:before {
+  	background: url(../media/bg/image-#{$name}@2x.jpg);
+
+    @include mq("mobile") {
+      background: url(../media/bg/image-#{$name}.jpg);
+    }
+  }
+}
+
+/* Patterns */
+
+@each $name in "01" {
+  .bg-pattern-#{$name} {
+    &:before {
+  		background: url(../media/bg/pattern-#{$name}@2x.jpg);
+
+      @include mq("mobile") {
+      	background: url(../media/bg/pattern-#{$name}.jpg);
+      }
+  	}
+
+  	&:after {
+  		background: url(../media/bg/mask-#{$name}.svg);
+  	}
+  }
+}

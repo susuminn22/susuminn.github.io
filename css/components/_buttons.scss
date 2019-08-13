@@ -1,0 +1,123 @@
+/* -----------------------------------------------------------------------------
+
+# Components - Buttons
+
+----------------------------------------------------------------------------- */
+
+.button {
+  @include font-size-default-b;
+  @include rounded;
+  @include transition;
+  display: inline-block;
+  height: 3rem;
+  line-height: 2.875rem;
+  padding: 0 1.25rem;
+	text-align: center;
+
+  &.button-s {
+    @include font-size-s-b;
+    height: 2rem;
+    line-height: 1.875rem;
+    padding: 0 0.75rem;
+  }
+
+  &.button-m {
+    @include font-size-m-b;
+    height: 2.5rem;
+    line-height: 2.375rem;
+    padding: 0 1rem;
+  }
+
+  &.button-l {
+    @include font-size-l-b;
+    height: 3.5rem;
+    line-height: 3.375rem;
+    padding: 0 1.5rem;
+  }
+
+  &.button-primary {
+    @include shadow-m;
+  	background: $color-primary;
+    border: 1px solid $color-primary;
+  	color: $color-white;
+
+    &:hover {
+      @include shadow-l;
+      @include transform;
+      background: lighten($color-primary, $lighten);
+      border: 1px solid lighten($color-primary, $lighten);
+    }
+
+    &:focus {
+      @include shadow-m;
+      @include transform(0);
+      background: $color-primary;
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &.button-secondary {
+    border: 1px solid $color-gray-medium;
+    color: $color-primary;
+
+    &:hover {
+      @include shadow-m;
+      @include transform;
+    }
+
+    &:focus {
+      @include shadow-none;
+      @include transform(0);
+    }
+
+    .dark & {
+      border: 1px solid rgba($color-white, $opacity-m);
+      color: $color-white;
+
+      &:hover {
+        border: 1px solid rgba($color-white, $opacity-s);
+      }
+
+      &:focus {
+        border: 1px solid rgba($color-white, $opacity-m);
+      }
+    }
+  }
+
+  &.button-disabled {
+    background: $color-gray-dark;
+    border: 1px solid $color-gray-dark;
+    color: $color-text;
+    cursor: default;
+    opacity: $opacity-m;
+    pointer-events: none;
+  }
+
+  @include mq("tablet") {
+    &.button-primary:hover,
+    &.button-secondary:hover {
+      @include shadow-none;
+      @include transform(0);
+    }
+  }
+
+  @include mq("mobile") {
+    height: 3.5rem;
+    line-height: 3.375rem;
+
+    &.button-s {
+      height: 2.5rem;
+      line-height: 2.375rem;
+    }
+
+    &.button-m {
+      height: 3rem;
+      line-height: 2.875rem;
+    }
+
+    &.button-l {
+      height: 4rem;
+      line-height: 3.875rem;
+    }
+  }
+}
